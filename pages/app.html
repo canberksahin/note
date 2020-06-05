@@ -1,0 +1,30 @@
+﻿<div class="container-fluid ">
+    <div class="row py-3">
+        <div class="col-md-4 col-lg-3">
+            <button ng-click="newNote()" class="btn btn-primary mb-2 add-new-note">
+                <i  class="fas fa-plus"></i> New Note
+            </button>
+            <div class="list-group" id="notes">
+                <a href="#" class="list-group-item list-group-item-action" ng-click="showNote($event,note)" ng-class="{active: note.Id== currentNote.Id}" ng-repeat="note in notes |orderBy:'Id' : true">
+                    {{note.Title}}
+                </a>
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-9 mt-md-0 mt-3">
+            <form id="frmNote" ng-submit="submitNote()">
+                <div class="form-group">
+                    <input id="title" type="text" ng-model="noteForm.Title" class="form-control" placeholder="Title" required />
+                </div>
+                <div class="form-group">
+                    <textarea id="content" ng-model="noteForm.Content" class="form-control" placeholder="Title" rows="6" cols="20"></textarea>
+                </div>
+                <div class="d-flex">
+                    <button id="btnSave" type="submit" class="btn btn-primary">Save</button>
+                    <button ng-click="deleteNote()" id="btnDelete" type="button" class="btn btn-danger ml-auto">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
